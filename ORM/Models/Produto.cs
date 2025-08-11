@@ -8,4 +8,6 @@ public class Produto
     public int QunatidadeEmEstoque { get; set; }
     public int UsuarioId { get; set; }
     public Usuario Usuario { get; set; }
+    public ICollection<Pedido> Pedidos = new List<Pedido>();
+    public ICollection<itemPedido> Itens { get; set; } = new List<itemPedido>();
 }

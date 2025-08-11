@@ -1,6 +1,5 @@
 ﻿using Marketplace.Models;
 using Microsoft.EntityFrameworkCore;
-using ORM.Models;
 
 namespace Marketplace.Banco;
 public class Context : DbContext
@@ -15,5 +14,28 @@ public class Context : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer(ConnectionString);
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Produto>()
+            .HasOne(p => p.Usuario)
+            .WithMany(u => u.Produtos)
+            .HasForeignKey(p => p.UsuarioId);
+
+        modelBuilder.Entity<Pedido>()
+            .HasOne(p => p.Usuario)
+            .WithMany(u => u.Pedidos)
+            .HasForeignKey(p => p.UsuarioId);
+
+        modelBuilder.Entity<itemPedido>()
+            .HasOne(ip => ip.Pedido)
+            .WithMany(p => p.Itens)
+            .HasForeignKey(ip => ip.PedidoId);
+
+        modelBuilder.Entity<itemPedido>()
+            .HasOne(ip => ip.Produto)
+            .WithMany(p => p.Itens)
+            .HasForeignKey(ip => ip.PedidoId);
     }
 }
