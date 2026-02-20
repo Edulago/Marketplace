@@ -54,3 +54,6 @@
 | belongs_to :product
 +----------------+
 ```
+
+
+add roler saller and buyer
