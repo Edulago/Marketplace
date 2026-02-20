@@ -1,0 +1,28 @@
+<nav class="navbar navbar-dark py-2" style="background-color: #222;">
+  <div class="container-fluid d-flex align-items-center gap-2">
+
+    <a class="navbar-brand" href="/">
+      <%= image_tag "logo.png", alt: "Logo", class: "img-fluid", style: "max-width: 50px; height: auto;" %>
+      Marketplace
+    </a>
+
+    <button class="navbar-toggler px-2 py-1 fs-6" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <a class="nav-link" href="#">Hardware</a>
+          <a class="nav-link" href="#">Computador</a>
+          <a class="nav-link" href="#">Games</a>
+          <a class="nav-link" href="#">Smartphone</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
