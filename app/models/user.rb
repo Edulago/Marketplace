@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :phone, presence: true, uniqueness: true
-  
-  enum role: {  buyer:0, seller:1, admin:2}
+
+  attribute :role, :integer, default: 0
+  enum :role, { buyer: 0, seller: 1, admin: 2 }
 end

@@ -1,3 +1,28 @@
 body {
     background-color: #F2F3F4
 }
+
+.home-carousel {
+    width: min(96vw, 1680px);
+    margin: 20px auto 0;
+    border-radius: 5px;
+}
+
+.home-carousel-image {
+    width: 100%;
+    height: clamp(300px, 50vw, 430px);
+    border-radius: 5px;
+}
+
+.product-card {
+    width: min(100%, 258px);
+}
+
+.product-card-image {
+    width: 100%;
+    aspect-ratio: 43 / 27;
+    object-fit: contain;
+    object-position: center;
+    padding: 8px;
+    background-color: #fff;
+}
