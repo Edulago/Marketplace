@@ -6,6 +6,18 @@
       Marketplace
     </a>
 
+    <% unless user_signed_in? %>
+      <%= link_to new_user_session_path, class: "text-white text-decoration-none ms-auto" do %>
+        <%= image_tag "user.png", class: "img-fluid", style: "max-width: 45px; height: auto;" %>
+      <% end %>
+    <% end %>
+
+    <% if user_signed_in? %>
+      <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "text-white text-decoration-none ms-auto" do %>
+        <%= image_tag "logout.png", class: "img-fluid", style: "max-width: 25px; height: auto;" %>
+      <% end %>
+    <% end %>
+
     <button class="navbar-toggler px-2 py-1 fs-6" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
