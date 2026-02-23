@@ -29,10 +29,13 @@
       </div>
       <div class="offcanvas-body">
         <div class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <a class="nav-link" href="#">Hardware</a>
+          <% Array(@products).map(&:category).compact.uniq.each do |category| %>
+            <%= link_to category.name, products_path(category_id: category.id), class: "nav-link" %>
+          <% end %>
+          <%# <a class="nav-link" href="#">Hardware</a>
           <a class="nav-link" href="#">Computador</a>
           <a class="nav-link" href="#">Games</a>
-          <a class="nav-link" href="#">Smartphone</a>
+          <a class="nav-link" href="#">Smartphone</a> %>
         </div>
       </div>
     </div>
