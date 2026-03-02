@@ -1,0 +1,50 @@
+<div class="container py-4">
+  <h2 class="h5 mb-3 text-center">Produtos relacionados</h2>
+
+  <% grouped_products = related_products.each_slice(3).to_a %>
+  <% carousel_id = "relatedProductsCarousel-#{current_product.id}" %>
+
+  <div class="mx-auto" style="max-width: 900px;">
+    <div id="<%= carousel_id %>" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+      <% grouped_products.each_with_index do |products_group, index| %>
+        <div class="carousel-item <%= "active" if index.zero? %>">
+          <div class="row g-3">
+            <% products_group.each do |product| %>
+              <div class="col-12 col-md-4">
+                <div class="card product-card h-100 shadow-sm rounded-4 w-100 border-0 bg-white">
+                  <% if product.image.attached? %>
+                    <%= image_tag product.image, class: "card-img-top product-card-image", alt: product.title %>
+                  <% else %>
+                    <%= image_tag "logo.png", class: "card-img-top product-card-image", alt: product.title %>
+                  <% end %>
+
+                  <div class="card-body d-flex flex-column">
+                    <h5 class="card-title"><%= product.title %></h5>
+                    <p class="card-text text-body-secondary mb-2">
+                      <%= truncate(product.description.to_s, length: 80) %>
+                    </p>
+                    <p class="fw-bold mt-auto mb-3">
+                      R$ <%= number_with_precision(product.price, precision: 2, delimiter: ".", separator: ",") %>
+                    </p>
+                    <%= link_to "Ver Produto", product_path(product), class: "btn btn-outline-primary w-100" %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#<%= carousel_id %>" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#<%= carousel_id %>" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo</span>
+      </button>
+    </div>
+  </div>
+</div>
