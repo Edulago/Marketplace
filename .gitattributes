@@ -1,5 +1,9 @@
 # See https://git-scm.com/docs/gitattributes for more about git attribute files.
 
+# Keep executable scripts Unix-friendly for Docker/Linux runtime.
+bin/* text eol=lf
+*.rb text eol=lf
+
 # Mark the database schema as having been generated.
 db/schema.rb linguist-generated
 
