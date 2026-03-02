@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_navbar_categories
 
   protected
 
@@ -12,4 +13,9 @@ class ApplicationController < ActionController::Base
   end
 
   allow_browser versions: :modern
+
+  private
+  def set_navbar_categories
+    @navbar_categories = Category.distinct.order(:name)
+  end 
 end

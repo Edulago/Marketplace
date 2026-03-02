@@ -29,7 +29,7 @@
       </div>
       <div class="offcanvas-body">
         <div class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <% Array(@products).map(&:category).compact.uniq.each do |category| %>
+          <% @navbar_categories.each do |category| %>
             <%= link_to category.name, products_path(category_id: category.id), class: "nav-link" %>
           <% end %>
           <%# <a class="nav-link" href="#">Hardware</a>
