@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
   stale_when_importmap_changes
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :phone])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :phone])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [ :name, :phone ])
+    devise_parameter_sanitizer.permit(:account_update, keys: [ :name, :phone ])
   end
 
   allow_browser versions: :modern
@@ -17,5 +17,5 @@ class ApplicationController < ActionController::Base
   private
   def set_navbar_categories
     @navbar_categories = Category.distinct.order(:name)
-  end 
+  end
 end
