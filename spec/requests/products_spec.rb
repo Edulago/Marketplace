@@ -1,51 +1,26 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Products", type: :request do
-  describe "GET /index" do
+  describe "GET /products" do
     it "returns http success" do
-      get "/products/index"
+      get products_path
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /show" do
+  describe "GET /products/:id" do
     it "returns http success" do
-      get "/products/show"
-      expect(response).to have_http_status(:success)
-    end
-  end
+      user = create(:user)
+      category = Category.create!(name: "Hardware")
+      product = Product.create!(
+        user: user,
+        category: category,
+        title: "Produto teste",
+        description: "Descrição teste",
+        price: 100
+      )
 
-  describe "GET /new" do
-    it "returns http success" do
-      get "/products/new"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /create" do
-    it "returns http success" do
-      get "/products/create"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /edit" do
-    it "returns http success" do
-      get "/products/edit"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /update" do
-    it "returns http success" do
-      get "/products/update"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /destroy" do
-    it "returns http success" do
-      get "/products/destroy"
+      get product_path(product)
       expect(response).to have_http_status(:success)
     end
   end
